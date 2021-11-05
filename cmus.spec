@@ -1,5 +1,5 @@
 Name:           cmus
-Version:        2.7.0
+Version:        2.9.1
 Release:        2%{?dist}
 Summary:        Ncurses-Based Music Player
 License:        GPLv2+
