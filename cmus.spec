@@ -1,5 +1,5 @@
 Name:           cmus
-Version:        2.9.1
+Version:        2.7.0
 Release:        2%{?dist}
 Summary:        Ncurses-Based Music Player
 License:        GPLv2+
@@ -45,7 +45,7 @@ operating systems
   CONFIG_ARTS=n \
   CONFIG_CDIO=n \
   CONFIG_CUE=y \
-  CONFIG_FFMPEG=y \
+  CONFIG_FFMPEG=a \
   CONFIG_FLAC=y \
   CONFIG_JACK=n \
   CONFIG_MAD=y \
