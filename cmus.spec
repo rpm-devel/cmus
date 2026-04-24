@@ -1,6 +1,6 @@
 Name:           cmus
-Version:        2.7.0
-Release:        2%{?dist}
+Version:        2.12.0
+Release:        1%{?dist}
 Summary:        Ncurses-Based Music Player
 License:        GPLv2+
 URL:            https://cmus.github.io/
@@ -89,6 +89,10 @@ chmod -x examples/*
 
 
 %changelog
+* Fri Apr 24 2026 CasjaysDev <rpm-devel@casjaysdev.pro> - 2.12.0-1
+- Update to 2.12.0
+- Modernize spec for EL10
+
 * Tue Aug 06 2019 Leigh Scott <leigh123linux@gmail.com> - 2.8.0-2
 - Rebuild for new ffmpeg version
 
