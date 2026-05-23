@@ -70,9 +70,9 @@ operating systems
 
 %install
 # Using the make_install macro causes the build to fail
-make install DESTDIR=$RPM_BUILD_ROOT
+make install DESTDIR=%{buildroot}
 
-mv $RPM_BUILD_ROOT%{_datadir}/%{name}/examples .
+mv %{buildroot}%{_datadir}/%{name}/examples .
 chmod -x examples/*
 
 
@@ -89,6 +89,9 @@ chmod -x examples/*
 
 
 %changelog
+* Fri May 22 2026 CasjaysDev <rpm-devel@casjaysdev.pro> - 2.12.0-1
+- Fix spec violations: use %{buildroot}, %global for constants
+
 * Fri Apr 24 2026 CasjaysDev <rpm-devel@casjaysdev.pro> - 2.12.0-1
 - Update to 2.12.0
 - Modernize spec for EL10
