@@ -2,8 +2,9 @@ Name:           cmus
 Version:        2.12.0
 Release:        1%{?dist}
 Summary:        Ncurses-Based Music Player
-License:        GPLv2+
+License:        GPL-2.0-or-later
 URL:            https://cmus.github.io/
+ExclusiveArch:  x86_64 aarch64
 Source0:        https://github.com/cmus/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
 
 BuildRequires:  alsa-lib-devel
@@ -89,6 +90,10 @@ chmod -x examples/*
 
 
 %changelog
+* Thu Jul 03 2026 CasjaysDev <rpm-devel@casjaysdev.pro> - 2.12.0-1
+- Source0: GitHub archive URL verified (2.12.0 is current, 302→200)
+- SPDX: GPLv2+ → GPL-2.0-or-later; ExclusiveArch: x86_64 aarch64
+
 * Fri May 22 2026 CasjaysDev <rpm-devel@casjaysdev.pro> - 2.12.0-1
 - Fix spec violations: use %{buildroot}, %global for constants
 
