@@ -7,7 +7,15 @@ URL:            https://cmus.github.io/
 ExclusiveArch:  x86_64 aarch64
 Source0:        https://github.com/cmus/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
 
-BuildRequires:  alsa-lib-devel
+%if 0%{?suse_version}
+%global alsa_devel_pkg alsa-devel
+%global pulse_devel_pkg libpulse-devel
+%else
+%global alsa_devel_pkg alsa-lib-devel
+%global pulse_devel_pkg pulseaudio-libs-devel
+%endif
+
+BuildRequires:  %{alsa_devel_pkg}
 BuildRequires:  faad2-devel
 BuildRequires:  ffmpeg-devel
 BuildRequires:  flac-devel
@@ -21,7 +29,7 @@ BuildRequires:  libmpcdec-devel
 BuildRequires:  libsamplerate-devel
 BuildRequires:  libvorbis-devel
 BuildRequires:  opusfile-devel
-BuildRequires:  pulseaudio-libs-devel
+BuildRequires:  %{pulse_devel_pkg}
 BuildRequires:  systemd-devel
 BuildRequires:  wavpack-devel
 BuildRequires:  ncurses-devel
@@ -90,6 +98,14 @@ chmod -x examples/*
 
 
 %changelog
+* Sat Jul 05 2026 CasjaysDev <rpm-devel@casjaysdev.pro> - 2.12.0-1
+- Guard alsa-lib-devel/alsa-devel and pulseaudio-libs-devel/libpulse-devel
+  for openSUSE/SLES (verified via opensuse.pkgs.org); other BuildRequires
+  confirmed identical across RHEL/Fedora/openSUSE, left unguarded.
+  ffmpeg-devel has no stable unversioned equivalent on openSUSE (only
+  version-suffixed ffmpeg-N-libavcodec-devel via Packman) so left
+  unguarded pending repo-specific handling if SUSE builds are attempted.
+
 * Thu Jul 03 2026 CasjaysDev <rpm-devel@casjaysdev.pro> - 2.12.0-1
 - Source0: GitHub archive URL verified (2.12.0 is current, 302→200)
 - SPDX: GPLv2+ → GPL-2.0-or-later; ExclusiveArch: x86_64 aarch64
